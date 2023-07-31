@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     background-color: pink;
@@ -6,7 +12,7 @@ body {
 .guziki {
     margin-top: 1rem;
     padding-top: 2vh;
-    height: 10vh;
+    height: 14vh;
     display: flex;
     align-content: center;
     justify-content: space-evenly;
@@ -28,18 +34,19 @@ body {
     justify-items: center;
 }
 
+.kody:p {
+    color: white;
+}
+
 section {
     width: 50vw;
     border: 1px solid;
+    border-radius: 25px;
 }
 
 .ostatnie {
     text-align: center;
     font-size: x-large;
-}
-
-.kody:p {
-    color: white;
 }
 
 .kod {
@@ -52,8 +59,26 @@ section {
     text-decoration: none;
     font-size: xx-large;
     border: 1px solid;
-    /* border-radius: 20px; */
+    border-radius: 20px;
+    background-color: rgb(86, 76, 76);
+    height: 4rem;
+    width: 7.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
 }
 
+.link {
+    background-image: radial-gradient( #ff96fd, #f8efff, #ffaffe);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
 
-/*# sourceMappingURL=style.css.map */
+@media only screen and (min-height:1440px) {
+    .guziki {
+        height: 10vh;
+    }
+}

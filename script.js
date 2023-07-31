@@ -9,18 +9,18 @@ function nh() {
     //window.open( + kodnh + '/');
     let druknh = document.getElementById("printnh");
     let linknh = nhl + kodnh;
-    druknh.innerHTML += '<a href=' + linknh + '>' + kodnh + '</a>' + '  ';
+    druknh.innerHTML += '<a href=' + linknh + '>' + '<p class="link">' + kodnh + '</p>' + '</a>';
 }
 
-function px() {
-    let pxl = 'https://www.pixiv.net/en/artworks/';
-    let kodpx = Math.floor(Math.random() * 120000000) + 1;
-    //window.open(px + kodpx + '/');
-    let drukpx = document.getElementById("printpx");
-    let linkpx = pxl + kodpx;
-    drukpx.innerHTML += '<a href =' + linkpx + '>' + kodpx; + '</a>';
-}
+// function px() {
+//     let pxl = 'https://www.pixiv.net/en/artworks/';
+//     let kodpx = Math.floor(Math.random() * 120000000) + 1;
+//     //window.open(px + kodpx + '/');
+//     let drukpx = document.getElementById("printpx");
+//     let linkpx = pxl + kodpx;
+//     drukpx.innerHTML += '<a href =' + linkpx + '>' + kodpx; + '</a>';
+// }
 
-function dyski() {
+// function dyski() {
 
-}
+// }
