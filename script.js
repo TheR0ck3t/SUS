@@ -1,26 +1,30 @@
 pnh = document.getElementById("nh");
 pnh.addEventListener("click", nh);
-pxv = document.getElementById("pxv");
-pxv.addEventListener("click", px);
+let kody = [];
 
-function nh() {
-    let nhl = 'https://www.nhentai.net/g/'
-    let kodnh = Math.floor(Math.random() * 430000) + 1;
-    //window.open( + kodnh + '/');
-    let druknh = document.getElementById("printnh");
-    let linknh = nhl + kodnh;
-    druknh.innerHTML += '<a href=' + linknh + '>' + '<p class="link">' + kodnh + '</p>' + '</a>';
+function losowanie() {
+    let rng = Math.floor(Math.random() * 465639) + 1;
+    kody.push(rng)
 }
 
-// function px() {
-//     let pxl = 'https://www.pixiv.net/en/artworks/';
-//     let kodpx = Math.floor(Math.random() * 120000000) + 1;
-//     //window.open(px + kodpx + '/');
-//     let drukpx = document.getElementById("printpx");
-//     let linkpx = pxl + kodpx;
-//     drukpx.innerHTML += '<a href =' + linkpx + '>' + kodpx; + '</a>';
-// }
+function nh() {
+    iloscKodow = 12;
+    let nhl = 'https://www.nhentai.net/g/'
+    let linki = [];
 
-// function dyski() {
+    for (let i = 0; i < 1; i++) {
+        losowanie();
+    }
+    for (var i = 0; i < kody.length; i++) {
+        linki.push(nhl + kody[i]);
+    }
+    let druknh = document.getElementById("printnh");
+    for (let i = 0; i < linki.length; i++) {
+        link = linki[i];
+        for (let i = 0; i < kody.length; i++) {
+            kod = kody[i];
+        }
+    }
+    druknh.innerHTML += '<a href=' + link + '>' + '<p class="link">' + kod + '</p>' + '</a>';
 
-// }
+}
