@@ -9,17 +9,22 @@ module.exports = async(bot, message) => {
                 {
                     message.reply('[SEX](https://pornhub.com/gayporn)😱🤯');
                     break;
-                }
+                };
             case 'stupid bot':
                 {
                     message.reply('Fuck off :heart:');
                     break;
-                }
+                };
             case 'soup':
                 {
                     message.reply('is stinki ~~gae~~ boy >:3');
                     break;
-                }
+                };
+            case 'hyatt':
+                {
+                    message.reply('big gai');
+                    break;
+                };
             default:
                 {
                     // Handle other messages
