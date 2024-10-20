@@ -73,7 +73,8 @@ try {
             resultWOGas24h = resultWOGas1h * 24;
             resultWGas24h = resultWOGas24h - gas;
             resultWGas1h = resultWGas24h / 24;
-            interaction.reply(`Result 24h: ${resultWOGas24h}(${resultWOGas1h}/1h)kr\nResult 24h(with gas): ${resultWGas24h}(${resultWGas1h}/1h) kr`);
+            koronasPerMinute = gpu * utlityLV;
+            interaction.reply(`Koronas per minute: ${koronasPerMinute} \nResult 24h: ${resultWOGas24h}(${resultWOGas1h}/1h)kr\nResult 24h(with gas): ${resultWGas24h}(${resultWGas1h}/1h) kr`);
         }
     }
 

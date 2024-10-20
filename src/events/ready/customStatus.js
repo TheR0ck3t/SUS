@@ -27,12 +27,12 @@ module.exports = async(bot) => {
             url: 'https://www.youtube.com/watch?v=K052uRykOJ8'
         },
         {
-            name: 'Boykissing (D+J)',
+            name: 'Reading e621',
             type: ActivityType.Streaming,
             url: 'https://www.youtube.com/watch?v=Ie57fr8pCko'
         },
         {
-            name: 'Boykissing (D+J)',
+            name: 'Reading e621',
             type: ActivityType.Streaming,
             url: 'https://www.youtube.com/watch?v=EIgToU0m4Pc'
         }

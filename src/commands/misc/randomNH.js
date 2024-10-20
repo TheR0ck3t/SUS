@@ -1,4 +1,3 @@
-try {
     module.exports = {
         name: 'random',
         description: 'Random nh',
@@ -18,7 +17,7 @@ try {
             nh(amount);
 
             function losowanie() {
-                let rng = Math.floor(Math.random() * 500000) + 1;
+                let rng = Math.floor(Math.random() * 535954) + 1;
                 kody.push(rng)
             }
 
@@ -44,6 +43,3 @@ try {
             }
         }
     }
-} catch (error) {
-    console.log('No i chuj no i cześć', error)
-}
