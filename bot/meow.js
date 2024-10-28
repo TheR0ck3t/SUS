@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: 'bot/.env' });
 const { IntentsBitField, Client, ActivityType } = require('discord.js');
 const eventHandler = require('./handlers/eventHandler');
 
