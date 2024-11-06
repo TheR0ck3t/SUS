@@ -27,9 +27,9 @@ app.get('/', (req, res) => {
 });
 
 app.post('/meow', async(req, res) => {
-    const { cum } = req.body;
+    const { meow } = req.body;
     try {
-        const result = await db.one(`INSERT INTO public.cum(nazwa) VALUES ($1) RETURNING *;`, [cum]);
+        const result = await db.one(`INSERT INTO public.cum(nazwa) VALUES ($1) RETURNING *;`, [meow]);
         res.status(201).json(result);
     } catch (error) {
         console.error(error);
