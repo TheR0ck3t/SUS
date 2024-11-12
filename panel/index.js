@@ -5,6 +5,7 @@ const path = require('path');
 const pgp = require('pg-promise')();
 const querystring = require('querystring');
 const crypto = require('crypto');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 const PORT = process.env.PORT || 6969;
@@ -21,6 +22,7 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
 
 app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, './public/index.html'));
@@ -41,8 +43,6 @@ app.post('/meow', async(req, res) => {
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
 const redirect_uri = 'http://localhost:6969/callback';
-
-let access_token = null;
 
 function generateRandomString(length) {
     return crypto.randomBytes(length).toString('hex');
@@ -87,8 +87,9 @@ app.get('/callback', async(req, res) => {
         };
 
         const tokenResponse = await axios.post(authOptions.url, authOptions.data, { headers: authOptions.headers });
-        access_token = tokenResponse.data.access_token;
+        const access_token = tokenResponse.data.access_token;
 
+        res.cookie('spotify_access_token', access_token, { httpOnly: true, secure: true });
         res.redirect('/');
     } catch (error) {
         console.error('Error fetching access token:', error);
@@ -98,6 +99,8 @@ app.get('/callback', async(req, res) => {
 
 // Spotify data route
 app.get('/spotify', async(req, res) => {
+    const access_token = req.cookies.spotify_access_token;
+
     if (!access_token) {
         return res.status(401).json({ error: 'No access token available' });
     }
