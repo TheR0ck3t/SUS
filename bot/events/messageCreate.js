@@ -36,7 +36,7 @@ module.exports = async(bot, message) => {
                     message.reply('yes daddy');
                     break;
                 };
-        };
+        }
     } catch (error) {
         console.error('No i chuj no i cześć', error);
     }

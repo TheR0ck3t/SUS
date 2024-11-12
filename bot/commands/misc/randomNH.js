@@ -3,14 +3,14 @@
         description: 'Random nh',
         options: [{
             name: 'x',
-            description: `can't be more than 47`,
+            description: `can't be more than 46`,
             type: 4,
             required: true,
         }, ],
         callback: (bot, interaction) => {
             let amount = interaction.options.get('x').value;
-            if (amount > 47) {
-                amount = 47
+            if (amount > 46) {
+                amount = 46
             }
             const odpowiedzi = [];
             let kody = [];

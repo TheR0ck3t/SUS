@@ -8,7 +8,7 @@ const crypto = require('crypto');
 const cookieParser = require('cookie-parser');
 
 const app = express();
-const PORT = process.env.PORT || 6969;
+const PORT = process.env.PORT;
 
 const db = pgp({
     host: process.env.DB_HOST,
@@ -28,6 +28,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, './public/index.html'));
 });
 
+// Baaza danych
 app.post('/meow', async(req, res) => {
     const { meow } = req.body;
     try {
@@ -38,6 +39,29 @@ app.post('/meow', async(req, res) => {
         res.status(500).json({ error: 'Could not save to the database.' });
     }
 });
+
+// Nbp
+app.get('/nbp', async(req, res) => {
+    try {
+        const [resultA, resultB, resultC] = await Promise.all([
+            axios.get('http://api.nbp.pl/api/exchangerates/tables/A?format=json'),
+            axios.get('http://api.nbp.pl/api/exchangerates/tables/B?format=json'),
+            axios.get('http://api.nbp.pl/api/exchangerates/tables/C?format=json')
+        ]);
+
+        const result = [
+            ...resultA.data[0].rates,
+            ...resultB.data[0].rates,
+            ...resultC.data[0].rates
+        ];
+
+        res.json(result);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Could not fetch data from NBP API.' });
+    }
+});
+
 
 // Spotify Client Details
 const client_id = process.env.CLIENT_ID;
