@@ -30,16 +30,23 @@
         <li>
             <h1>NBP</h1>
             <form>
-                <!-- <label for="nbp">nbp</label>
-                <input type="text" name="nbp" id=""> -->
-                <input type="button" value="nbp" id="nbp-submit">
+                <input type="button" value="Wczytaj kursy" id="nbp-submit">
+                <select name="code" id="code">
+                </select>
+                <label for="codeToPln">Waluta na złotówki</label>
+                <input type="number" name="codeToPln" id="codeToPln">
+                <span id="resultCodeToPln"></span>
+                <br><label for="plnToCode">Złotówki na walutę</label>
+                <input type="number" name="plnToCode" id="plnToCode">
+                <span id="resultPlnToCode"></span>
             </form>
-            <div id="nbp-table"></div>
+            <table id="nbp-table"></table>
         </li>
         <li>
             <h1>
                 <form action="/login" method="get">
                     <input type="submit" value="login">
+                    <input type="button" value="sync" id="sync">
                 </form>
             </h1>
         </li>

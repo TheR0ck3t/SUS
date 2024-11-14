@@ -43,16 +43,14 @@ app.post('/meow', async(req, res) => {
 // Nbp
 app.get('/nbp', async(req, res) => {
     try {
-        const [resultA, resultB, resultC] = await Promise.all([
+        const [resultA, resultB] = await Promise.all([
             axios.get('http://api.nbp.pl/api/exchangerates/tables/A?format=json'),
-            axios.get('http://api.nbp.pl/api/exchangerates/tables/B?format=json'),
-            axios.get('http://api.nbp.pl/api/exchangerates/tables/C?format=json')
+            axios.get('http://api.nbp.pl/api/exchangerates/tables/B?format=json')
         ]);
 
         const result = [
             ...resultA.data[0].rates,
-            ...resultB.data[0].rates,
-            ...resultC.data[0].rates
+            ...resultB.data[0].rates
         ];
 
         res.json(result);
