@@ -6,18 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CUM</title>
     <link rel="alternate" type="application/json+oembed" href="https://open.spotify.com/oembed?url=https%3A%2F%2Fopen.spotify.com%2Fshow%2F5eXZwvvxt3K2dxha3BSaAe" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./res/styles/style.css">
 </head>
 
 <body>
     <ul>
         <li>
             <h1>Meow</h1>
-            <form action="/meow" method="post">
+            <form id="meowForm">
                 <label for="meow">Meow</label>
-                <input type="text" name="meow" id="">
-                <input type="submit" value="meow">
+                <input type="text" name="meow" id="meowInput">
+                <button type="submit">Meow</button>
             </form>
+            <div id="response"></div>
         </li>
         <li>
             <h1>CUM</h1>
@@ -61,8 +62,9 @@
         </li>
     </ul>
 
-    <script src="./spotify.js"></script>
-    <script src="./nbp.js"></script>
+    <script src="./res/scripts/spotify.js"></script>
+    <script src="./res/scripts/nbp.js"></script>
+    <script src="./res/scripts/meow_db.js"></script>
 </body>
 
 

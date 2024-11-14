@@ -52,8 +52,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 clearInterval(statusCheckInterval);
             }
         } catch (error) {
-            console.error('Error fetching Spotify data:', error);
-            document.getElementById('spotify').innerHTML = 'Error fetching Spotify data.';
+            console.error('Error fetching Spotify data or not logged:', error);
+            document.getElementById('spotify').innerHTML = 'Error fetching Spotify data/Not token in cookies, please log in.';
             clearInterval(timerInterval);
             clearInterval(statusCheckInterval);
         }
