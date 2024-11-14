@@ -1,0 +1,7 @@
+.calc {
+    display: none;
+}
+
+.calc-loaded {
+    display: inline-block;
+}

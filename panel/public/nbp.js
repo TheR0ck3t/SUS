@@ -1,7 +1,9 @@
 document.getElementById('nbp-submit').addEventListener('click', function() {
+    document.getElementById('calc').setAttribute('class', 'calc-loaded')
     fetch('/nbp')
         .then(response => response.json())
         .then(data => {
+
             const table = document.getElementById('nbp-table');
             table.innerHTML = `
             <table>
@@ -23,39 +25,65 @@ document.getElementById('nbp-submit').addEventListener('click', function() {
                 </tr>
             `).join('') + `</table>`;
 
-            document.getElementById('code').innerHTML = data.map(rate => `
+            document.getElementById('codeToPln').innerHTML = data.map(rate => `
                 <option value="${rate.code}">${rate.code}</option>
             `).join('');
 
-            const codeToPlnInput = document.getElementById('codeToPln');
-            const codeSelect = document.getElementById('code');
-            const resultCodeToPln = document.getElementById('resultCodeToPln');
+            document.getElementById('plnToCode').innerHTML = data.map(rate => `
+                <option value="${rate.code}">${rate.code}</option>
+            `).join('');
 
-            // Function to calculate and update the exchange rate
-            function updateExchangeRate() {
+            const codeToPlnInput = document.getElementById('codeToPlnInput');
+            const codeSelect = document.getElementById('codeToPln');
+            const resultCodeToPln = document.getElementById('resultCodeToPln');
+            const plnToCodeInput = document.getElementById('plnToCodeInput');
+            const resultPlnToCode = document.getElementById('resultPlnToCode');
+
+            // Function to calculate and update the exchange rate from currency to PLN
+            function updateExchangeRateToPln() {
                 const code = codeSelect.value;
                 const rate = data.find(rate => rate.code === code);
-                const codeToPln = parseFloat(codeToPlnInput.value); // Ensure it's a number
-                if (!isNaN(codeToPln) && rate) {
-                    const result = codeToPln * rate.mid;
+                const amount = parseFloat(codeToPlnInput.value); // Ensure it's a number
+                if (!isNaN(amount) && rate) {
+                    const result = amount * rate.mid;
                     resultCodeToPln.innerHTML = Math.round(result * 100) / 100 + ` PLN`;
-                } else if (isNaN(codeToPln) || codeToPln === '') {
+                } else if (isNaN(amount) || amount === '') {
                     resultCodeToPln.innerHTML = '';
                 } else {
                     resultCodeToPln.innerHTML = 'Invalid input or rate not found';
                 }
-
             }
 
-            // Event listener for when the "code" dropdown changes
-            codeSelect.addEventListener('change', updateExchangeRate);
+            // Function to calculate and update the exchange rate from PLN to currency
+            function updateExchangeRateFromPln() {
+                const code = codeSelect.value;
+                const rate = data.find(rate => rate.code === code);
+                const amount = parseFloat(plnToCodeInput.value); // Ensure it's a number
+                if (!isNaN(amount) && rate) {
+                    const result = amount / rate.mid;
+                    resultPlnToCode.innerHTML = Math.round(result * 100) / 100 + ` ${code}`;
+                } else if (isNaN(amount) || amount === '') {
+                    resultPlnToCode.innerHTML = '';
+                } else {
+                    resultPlnToCode.innerHTML = 'Invalid input or rate not found';
+                }
+            }
 
-            // Event listener for when the "codeToPln" input changes
-            codeToPlnInput.addEventListener('input', updateExchangeRate);
+            // Event listener for when the "codeToPln" dropdown changes
+            codeSelect.addEventListener('change', () => {
+                updateExchangeRateToPln();
+                updateExchangeRateFromPln();
+            });
+
+            // Event listener for when the "codeToPlnInput" input changes
+            codeToPlnInput.addEventListener('input', updateExchangeRateToPln);
+
+            // Event listener for when the "plnToCodeInput" input changes
+            plnToCodeInput.addEventListener('input', updateExchangeRateFromPln);
 
             // Initial calculation on page load (in case a default option is pre-selected)
-            updateExchangeRate();
-
+            updateExchangeRateToPln();
+            updateExchangeRateFromPln();
 
         })
         .catch(error => {

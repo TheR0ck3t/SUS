@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CUM</title>
     <link rel="alternate" type="application/json+oembed" href="https://open.spotify.com/oembed?url=https%3A%2F%2Fopen.spotify.com%2Fshow%2F5eXZwvvxt3K2dxha3BSaAe" />
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -31,14 +31,18 @@
             <h1>NBP</h1>
             <form>
                 <input type="button" value="Wczytaj kursy" id="nbp-submit">
-                <select name="code" id="code">
-                </select>
-                <label for="codeToPln">Waluta na złotówki</label>
-                <input type="number" name="codeToPln" id="codeToPln">
-                <span id="resultCodeToPln"></span>
-                <br><label for="plnToCode">Złotówki na walutę</label>
-                <input type="number" name="plnToCode" id="plnToCode">
-                <span id="resultPlnToCode"></span>
+                <br>
+                <div id="calc" class="calc">
+                    <select name="codeToPln" id="codeToPln"></select>
+                    <label for="codeToPlnInput">Waluta na złotówki</label>
+                    <input type="number" name="codeToPlnInput" id="codeToPlnInput">
+                    <span id="resultCodeToPln"></span>
+                    <br>
+                    <input type="number" name="plnToCodeInput" id="plnToCodeInput">
+                    <label for="plnToCodeInput">Złotówki na walutę</label>
+                    <select name="plnToCode" id="plnToCode"></select>
+                    <span id="resultPlnToCode"></span>
+                </div>
             </form>
             <table id="nbp-table"></table>
         </li>
