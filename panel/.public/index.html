@@ -12,6 +12,26 @@
 <body>
     <ul>
         <li>
+            <h1>Register</h1>
+            <form id="register">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="usernameInput">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="passwordInput">
+                <button type="submit">Register</button>
+            </form>
+        </li>
+        <li>
+            <h1>Login</h1>
+            <form id="login">
+                <label for="loginUsername">Username</label>
+                <input type="text" name="loginUsername" id="loginUsernameInput">
+                <label for="loginPassword">Password</label>
+                <input type="password" name="loginPassword" id="loginPasswordInput">
+                <button type="submit">Login</button>
+            </form>
+        </li>
+        <li>
             <h1>Meow</h1>
             <form id="meowForm">
                 <label for="meow">Meow</label>
@@ -21,12 +41,12 @@
             <div id="response"></div>
         </li>
         <li>
-            <h1>CUM</h1>
-            <form action="/arf" method="post">
-                <label for="arf">cum</label>
-                <input type="text" name="arf" id="">
-                <input type="submit" value="arf">
+            <h1>Arf</h1>
+            <form>
+                <label for="arf">Arf</label>
+                <input type="button" value="arf" id="arf-load">
             </form>
+            <table id="arf-table"></table>
         </li>
         <li>
             <h1>NBP</h1>
@@ -49,7 +69,7 @@
         </li>
         <li>
             <h1>
-                <form action="/login" method="get">
+                <form action="/spotifyLogin" method="get">
                     <input type="submit" value="login">
                     <input type="button" value="sync" id="sync">
                 </form>
@@ -64,7 +84,10 @@
 
     <script src="./res/scripts/spotify.js"></script>
     <script src="./res/scripts/nbp.js"></script>
-    <script src="./res/scripts/meow_db.js"></script>
+    <script src="./res/scripts/meow.js"></script>
+    <script src="./res/scripts/arf.js"></script>
+    <script type="module" src="./res/scripts/auth/register.js"></script>
+    <script type="module" src="./res/scripts/auth/login.js"></script>
 </body>
 
 
